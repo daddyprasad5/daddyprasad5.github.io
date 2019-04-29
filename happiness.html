@@ -13113,25 +13113,25 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Happiness-(and-it's-opposite)-research">Happiness (and it's opposite) research<a class="anchor-link" href="#Happiness-(and-it's-opposite)-research">&#182;</a></h1><p>This is a set of plotting exercises for my thinkful data science course.  I'm exploring what makes people in some countries happier and what makes them more likely to commit suicide.</p>
+<p>Raj Prasad, April 2019</p>
+<p><a href="https://github.com/daddyprasad5/thinkful/blob/master/happiness.ipynb">notebook version</a>
+<a href="https://daddyprasad5.github.io/happiness.html">html version</a></p>
+<h2 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h2><p><a href="https://github.com/daddyprasad5/thinkful/blob/master/suicide.csv">suicide data</a>
+<a href="https://github.com/daddyprasad5/thinkful/blob/master/2017.csv">happiness data</a></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#imports, file load, and print header of raw data</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">statistics</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">ttest_ind</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="c1">#import data from local file - assumed to be in same directory as this workbook</span>
-<span class="n">h</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;2017.csv&#39;</span><span class="p">)</span>
-<span class="n">h</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#imports, file load, and print header of raw data↔</span>
 </pre></div>
 
     </div>
@@ -13309,29 +13309,7 @@ Cons: Requires some additional explanation, as compared to the historgram and KD
 <div class="prompt input_prompt">In&nbsp;[268]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Choose one variable and plot that variable four different way</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;distribution with kde&quot;</span><span class="p">)</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;boxplot with swarm&quot;</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">)</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">swarmplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;violin plot&quot;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;vlag&quot;</span><span class="p">,</span> <span class="n">bw</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">cut</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;distribution with gamma distribution comparison&quot;</span><span class="p">)</span>
-<span class="n">ax4</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fit</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="p">,</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelleft</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Choose one variable and plot that variable four different way↔</span>
 </pre></div>
 
     </div>
@@ -13379,23 +13357,7 @@ Cons: Requires some additional explanation, as compared to the historgram and KD
 <div class="prompt input_prompt">In&nbsp;[269]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Choose two continuous variables, and plot them three different ways.</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-
-<span class="c1"># plt.subplot(1,2,1)</span>
-<span class="c1"># ax1 = sns.regplot(x=&quot;Economy..GDP.per.Capita.&quot;, y=&quot;Happiness.Score&quot;, data=h, fit_reg=False)</span>
-
-<span class="c1">#plt.subplot(1,2,2)</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Economy..GDP.per.Capita.&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">})</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">ax3</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Economy..GDP.per.Capita.&quot;</span><span class="p">],</span> <span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">n_levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">rugplot</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Economy..GDP.per.Capita.&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">rugplot</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">vertical</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">);</span>
-
-
-<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Economy..GDP.per.Capita.&quot;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">h</span><span class="p">[</span><span class="s2">&quot;Happiness.Score&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hex&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">);</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Choose two continuous variables, and plot them three different ways.↔</span>
 </pre></div>
 
     </div>
@@ -13473,9 +13435,7 @@ Cons: Requires some additional explanation, as compared to the historgram and KD
 <div class="prompt input_prompt">In&nbsp;[270]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import data from local file - assumed to be in same directory as this workbook</span>
-<span class="n">su</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;suicide.csv&#39;</span><span class="p">)</span>
-<span class="n">su</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import data from local file - assumed to be in same directory as this workbook↔</span>
 </pre></div>
 
     </div>
@@ -14080,7 +14040,73 @@ Ttest_indResult(statistic=-6.79652101912513, pvalue=1.1481315343482047e-11)
 <div class="prompt input_prompt">In&nbsp;[281]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find a dataset with at least four continuous variables and one categorical variable. ↔</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Find a dataset with at least four continuous variables and one categorical variable. </span>
+<span class="c1"># Create one master plot that gives insight into the variables and their interrelationships, including:</span>
+<span class="c1">#   Probability distributions</span>
+<span class="c1">#   Bivariate relationships</span>
+<span class="c1">#   Whether the distributions or the relationships vary across groups</span>
+<span class="c1">#   Accompany your plot with a written description of what you see.</span>
+
+<span class="c1">#one categorical: age</span>
+<span class="c1">#four continuous: suicide rate, hdi, gdp per capita, population</span>
+
+<span class="c1">#probability distribuitons</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes.spines&quot;</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">male_sr</span> <span class="o">=</span> <span class="n">su</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">su</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;male&quot;</span><span class="p">][</span><span class="s2">&quot;suicides/100k pop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">female_sr</span> <span class="o">=</span> <span class="n">su</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">su</span><span class="p">[</span><span class="s2">&quot;sex&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;female&quot;</span><span class="p">][</span><span class="s2">&quot;suicides/100k pop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1">#ax1 = sns.boxplot(male_sr)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;suicides/100k pop&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">su</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;country suicide rates are skewed low, with a dramatic difference by gender&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">su</span><span class="p">[</span><span class="s2">&quot;HDI for year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;country HDI&#39;s are skewed high&quot;</span><span class="p">)</span>
+
+<span class="c1">#Bi-variate relationships</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax6</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;gdp_per_capita ($)&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;HDI for year&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">su</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span><span class="o">.</span><span class="mi">02</span><span class="p">},</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;r&quot;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;GDP/capita&#39;s positive impact on GDP tails off at $40-60k&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">su</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">],</span> <span class="n">su</span><span class="p">[</span><span class="s2">&quot;gdp_per_capita ($)&quot;</span><span class="p">],</span> <span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shade_lowest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;countries are clustered heavily at low gdp/capital and population&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;hdi_bin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;suicides/100k pop&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">su</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;suicide rates rise with HDI&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ordered_age</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;5-14 years&quot;</span><span class="p">,</span> <span class="s2">&quot;15-24 years&quot;</span><span class="p">,</span> <span class="s2">&quot;25-34 years&quot;</span><span class="p">,</span> <span class="s2">&quot;35-54 years&quot;</span><span class="p">,</span> <span class="s2">&quot;55-74 years&quot;</span><span class="p">,</span> <span class="s2">&quot;75+ years&quot;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;suicides/100k pop&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">su</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">ordered_age</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;suicides/100k pop&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">su</span><span class="p">,</span><span class="n">whis</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">ordered_age</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;suicide rates mean and variance rise steadily with age&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># a bunch of less interesting plots...</span>
+<span class="c1"># plt.subplot(4,2,5)</span>
+<span class="c1"># counts = su[&quot;age&quot;].value_counts()</span>
+<span class="c1"># tot = counts.sum() / 100.0</span>
+<span class="c1"># autopct = lambda x: &quot;%d&quot; % round(x * tot)</span>
+<span class="c1"># ax5 = plt.pie(counts.values, labels=counts.index, autopct=autopct,</span>
+<span class="c1">#         shadow=True, startangle=90)</span>
+<span class="c1"># plt.title(&quot;most countries in the sample have suicides\n recorded in all age groups&quot;)</span>
+
+<span class="c1"># plt.subplot(3,2,3)</span>
+<span class="c1"># ax3 = sns.distplot(su[&quot;gdp_per_capita ($)&quot;].dropna())</span>
+<span class="c1"># plt.title(&quot;country GDP per Capita is skewed low, with a very few countries with very high GDP/capita&quot;)</span>
+
+<span class="c1"># plt.subplot(3,2,4)</span>
+<span class="c1"># ax4 = sns.distplot(su[&quot;population&quot;].dropna())</span>
+<span class="c1"># plt.title(&quot;country populations are heavily skewed small&quot;)</span>
 </pre></div>
 
     </div>
