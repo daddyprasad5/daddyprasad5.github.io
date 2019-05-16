@@ -13116,13 +13116,13 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Model-Preparation-Challenge">Model Preparation Challenge<a class="anchor-link" href="#Model-Preparation-Challenge">&#182;</a></h1><p>This is an assignment for my thinkful data science course - "Model_Preparation_Challenge"
+<h5 id="Model-Preparation-Challenge">Model Preparation Challenge<a class="anchor-link" href="#Model-Preparation-Challenge">&#182;</a></h5><p>This is an assignment for my thinkful data science course - "Model_Preparation_Challenge"
 Raj Prasad
 May 2019</p>
 <p><a href="https://daddyprasad5.github.io/Model_Preparation_Challenge.html">html version</a> - with all the code hidden away for a quick read</p>
 <p><a href="https://github.com/daddyprasad5/thinkful/blob/master/Model_Preparation_Challenge.ipynb">jupyter notebook version</a> - with all the code exposed in an interactive notebook</p>
 <p>My goal in this challenge is to identify features that could be used in a model to predict life-expectancy for a given country and year.</p>
-<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p>I would begin my modeling using five features: the status of the country (developed vs developing) and the first four PCA components of 10 continuous dimensions (described below).  The four PCA components capture nearly 80% of the variance in the 10 dimensions, and have correlation with life expectancy of .84, .06, .01 and .29 respectively.   This approach captures much of the information in 11 dimensions, with the computational complexity of only 5 dimensions.</p>
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2><p>I would begin my modeling using five features: the status of the country (developed vs developing) and the first four PCA components of 10 continuous dimensions (described below).  The four PCA components capture nearly 80% of the variance in the 10 dimensions, and have correlation with life expectancy of .85, .05, .18 and .19 respectively.   This approach captures much of the information in 11 dimensions, with the computational complexity of only 5 dimensions.</p>
 <p>These are the candidate features and my recommendation to include the feature or not in first modeling attempts.</p>
 <p><strong>candidate features that are recommended:</strong></p>
 <ul>
@@ -13239,7 +13239,7 @@ May 2019</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fix column headers↔</span>
@@ -13252,7 +13252,7 @@ May 2019</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fill missing values↔</span>
@@ -13265,7 +13265,7 @@ May 2019</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Dropping GDP and Pop, filling the remainder with annual average across all countries↔</span>
@@ -13353,7 +13353,7 @@ These are extreme values statistically, but I have no semantic reason to distrus
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#find outliers↔</span>
@@ -13883,7 +13883,7 @@ Number of outliers (down-side) is: 28 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#manage outliers↔</span>
@@ -14293,7 +14293,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#describe of cleaned data↔</span>
@@ -14309,7 +14309,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -14343,16 +14343,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <th>BMI</th>
       <th>under-five deaths</th>
       <th>...</th>
+      <th>winsorized Income composition of resources</th>
+      <th>winsorized Schooling</th>
+      <th>winsorized percentage expenditure</th>
+      <th>log Adult Mortality</th>
       <th>log Polio</th>
       <th>log Total expenditure</th>
       <th>log Diphtheria</th>
       <th>log HIV/AIDS</th>
       <th>log thinness  1-19 years</th>
       <th>log thinness 5-9 years</th>
-      <th>PCA0</th>
-      <th>PCA1</th>
-      <th>PCA2</th>
-      <th>PCA3</th>
     </tr>
   </thead>
   <tbody>
@@ -14375,10 +14375,10 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>2938.000000</td>
       <td>2938.000000</td>
       <td>2938.000000</td>
-      <td>2.938000e+03</td>
-      <td>2.938000e+03</td>
-      <td>2.938000e+03</td>
-      <td>2.938000e+03</td>
+      <td>2938.000000</td>
+      <td>2938.000000</td>
+      <td>2938.000000</td>
+      <td>2938.000000</td>
     </tr>
     <tr>
       <th>mean</th>
@@ -14393,16 +14393,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>38.323713</td>
       <td>42.035739</td>
       <td>...</td>
+      <td>0.640659</td>
+      <td>12.112604</td>
+      <td>422.277005</td>
+      <td>4.708887</td>
       <td>4.299985</td>
       <td>1.679507</td>
       <td>4.294785</td>
       <td>-1.221949</td>
       <td>1.134315</td>
       <td>1.122592</td>
-      <td>7.739063e-17</td>
-      <td>-4.353223e-17</td>
-      <td>2.902149e-17</td>
-      <td>4.262531e-17</td>
     </tr>
     <tr>
       <th>std</th>
@@ -14417,16 +14417,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>19.929396</td>
       <td>160.445548</td>
       <td>...</td>
+      <td>0.171622</td>
+      <td>2.740865</td>
+      <td>727.354537</td>
+      <td>1.072238</td>
       <td>0.624129</td>
       <td>0.476577</td>
       <td>0.629096</td>
       <td>1.613377</td>
       <td>1.038579</td>
       <td>1.071781</td>
-      <td>2.136847e+00</td>
-      <td>1.281095e+00</td>
-      <td>9.328621e-01</td>
-      <td>8.321085e-01</td>
     </tr>
     <tr>
       <th>min</th>
@@ -14441,16 +14441,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>1.000000</td>
       <td>0.000000</td>
       <td>...</td>
+      <td>0.291000</td>
+      <td>7.200000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>1.098612</td>
       <td>-0.994252</td>
       <td>0.693147</td>
       <td>-2.302585</td>
       <td>-2.302585</td>
       <td>-2.302585</td>
-      <td>-4.369559e+00</td>
-      <td>-2.526373e+00</td>
-      <td>-2.794960e+00</td>
-      <td>-2.063133e+00</td>
     </tr>
     <tr>
       <th>25%</th>
@@ -14465,16 +14465,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>19.400000</td>
       <td>0.000000</td>
       <td>...</td>
+      <td>0.504250</td>
+      <td>10.300000</td>
+      <td>4.685343</td>
+      <td>4.304065</td>
       <td>4.343805</td>
       <td>1.453953</td>
       <td>4.356709</td>
       <td>-2.302585</td>
       <td>0.470004</td>
       <td>0.470004</td>
-      <td>-1.634120e+00</td>
-      <td>-9.610294e-01</td>
-      <td>-6.175271e-01</td>
-      <td>-5.975562e-01</td>
     </tr>
     <tr>
       <th>50%</th>
@@ -14489,16 +14489,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>43.000000</td>
       <td>4.000000</td>
       <td>...</td>
+      <td>0.673000</td>
+      <td>12.300000</td>
+      <td>64.912906</td>
+      <td>4.969813</td>
       <td>4.532599</td>
       <td>1.750937</td>
       <td>4.532599</td>
       <td>-2.302585</td>
       <td>1.223775</td>
       <td>1.223775</td>
-      <td>-3.039755e-01</td>
-      <td>-2.159308e-01</td>
-      <td>-1.970486e-02</td>
-      <td>-2.906895e-02</td>
     </tr>
     <tr>
       <th>75%</th>
@@ -14513,16 +14513,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>56.100000</td>
       <td>28.000000</td>
       <td>...</td>
+      <td>0.772000</td>
+      <td>14.100000</td>
+      <td>441.534144</td>
+      <td>5.424950</td>
       <td>4.574711</td>
       <td>2.005526</td>
       <td>4.574711</td>
       <td>-0.223144</td>
       <td>1.960095</td>
       <td>1.974081</td>
-      <td>1.756640e+00</td>
-      <td>7.410605e-01</td>
-      <td>6.407630e-01</td>
-      <td>5.741443e-01</td>
     </tr>
     <tr>
       <th>max</th>
@@ -14537,20 +14537,20 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>87.300000</td>
       <td>2500.000000</td>
       <td>...</td>
+      <td>0.948000</td>
+      <td>16.800000</td>
+      <td>2443.444275</td>
+      <td>6.583409</td>
       <td>4.595120</td>
       <td>2.867899</td>
       <td>4.595120</td>
       <td>3.923952</td>
       <td>3.321432</td>
       <td>3.353407</td>
-      <td>5.314014e+00</td>
-      <td>5.782967e+00</td>
-      <td>3.850216e+00</td>
-      <td>2.832007e+00</td>
     </tr>
   </tbody>
 </table>
-<p>8 rows × 35 columns</p>
+<p>8 rows × 31 columns</p>
 </div>
 </div>
 
@@ -14562,7 +14562,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example rows↔</span>
@@ -14578,7 +14578,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -14612,16 +14612,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <th>Hepatitis B</th>
       <th>Measles</th>
       <th>...</th>
+      <th>winsorized Income composition of resources</th>
+      <th>winsorized Schooling</th>
+      <th>winsorized percentage expenditure</th>
+      <th>log Adult Mortality</th>
       <th>log Polio</th>
       <th>log Total expenditure</th>
       <th>log Diphtheria</th>
       <th>log HIV/AIDS</th>
       <th>log thinness  1-19 years</th>
       <th>log thinness 5-9 years</th>
-      <th>PCA0</th>
-      <th>PCA1</th>
-      <th>PCA2</th>
-      <th>PCA3</th>
     </tr>
   </thead>
   <tbody>
@@ -14638,16 +14638,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>65.0</td>
       <td>1154.0</td>
       <td>...</td>
+      <td>0.479</td>
+      <td>10.1</td>
+      <td>71.279624</td>
+      <td>5.572154</td>
       <td>1.791759</td>
       <td>2.099244</td>
       <td>4.174387</td>
       <td>-2.302585</td>
       <td>2.844909</td>
       <td>2.850707</td>
-      <td>2.932304</td>
-      <td>0.658252</td>
-      <td>0.983823</td>
-      <td>1.296178</td>
     </tr>
     <tr>
       <th>1</th>
@@ -14662,16 +14662,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>62.0</td>
       <td>492.0</td>
       <td>...</td>
+      <td>0.476</td>
+      <td>10.0</td>
+      <td>73.523582</td>
+      <td>5.602119</td>
       <td>4.060443</td>
       <td>2.101692</td>
       <td>4.127134</td>
       <td>-2.302585</td>
       <td>2.862201</td>
       <td>2.862201</td>
-      <td>2.390477</td>
-      <td>-0.199340</td>
-      <td>0.622720</td>
-      <td>1.303000</td>
     </tr>
     <tr>
       <th>2</th>
@@ -14686,16 +14686,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>64.0</td>
       <td>430.0</td>
       <td>...</td>
+      <td>0.470</td>
+      <td>9.9</td>
+      <td>73.219243</td>
+      <td>5.590987</td>
       <td>4.127134</td>
       <td>2.095561</td>
       <td>4.158883</td>
       <td>-2.302585</td>
       <td>2.873565</td>
       <td>2.873565</td>
-      <td>2.342784</td>
-      <td>-0.367352</td>
-      <td>0.576878</td>
-      <td>1.283417</td>
     </tr>
     <tr>
       <th>3</th>
@@ -14710,16 +14710,16 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>67.0</td>
       <td>2787.0</td>
       <td>...</td>
+      <td>0.463</td>
+      <td>9.8</td>
+      <td>78.184215</td>
+      <td>5.605802</td>
       <td>4.204693</td>
       <td>2.142416</td>
       <td>4.204693</td>
       <td>-2.302585</td>
       <td>2.884801</td>
       <td>2.890372</td>
-      <td>2.264976</td>
-      <td>-0.593151</td>
-      <td>0.515774</td>
-      <td>1.259757</td>
     </tr>
     <tr>
       <th>4</th>
@@ -14734,20 +14734,20 @@ Number of outliers (down-side) is: 37 at threshold 3
       <td>68.0</td>
       <td>3013.0</td>
       <td>...</td>
+      <td>0.454</td>
+      <td>9.5</td>
+      <td>7.097109</td>
+      <td>5.616771</td>
       <td>4.219508</td>
       <td>2.063058</td>
       <td>4.219508</td>
       <td>-2.302585</td>
       <td>2.901422</td>
       <td>2.901422</td>
-      <td>2.335718</td>
-      <td>-0.704260</td>
-      <td>0.543998</td>
-      <td>1.184314</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 37 columns</p>
+<p>5 rows × 33 columns</p>
 </div>
 </div>
 
@@ -14768,7 +14768,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#un-transformed variable distributions↔</span>
@@ -14829,7 +14829,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#life-expectancy by country status↔</span>
@@ -14875,7 +14875,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#continuous variable correlations↔</span>
@@ -15671,7 +15671,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -15902,14 +15902,14 @@ Number of outliers (down-side) is: 37 at threshold 3
 </li>
 </ul>
 <p>The correlation matrix for the remaining features are shown below. You can see that there is considerable cross correlation. <em>log thinness 5-9 years</em> and <em>log thinness 1-19 years</em> are so highly correlated with each other, that I'll drop one of them.</p>
-<p>Given the considerable correlation between the remaining 10 candidate features, a PCA analysis is useful to reduce dimensionality.  The top four PCA components capture nearly 80% of the variance in the 10 remaining canidate features, and have correlation with life expectancy of .84, .06, .01 and .29 respectively.  These four components and the status variable are the five dimensions I recommend using as one starts modeling.</p>
+<p>Given the considerable correlation between the remaining 10 candidate features, a PCA analysis is useful to reduce dimensionality.  The top four PCA components capture nearly 80% of the variance in the 10 remaining canidate features, and have correlation with life expectancy of .85, .05, .18 and .19 respectively.  These four components and the status variable are the five dimensions I recommend using as one starts modeling.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#correlation matrix for candidate features↔</span>
@@ -15944,7 +15944,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Calc PCA↔</span>
@@ -15960,7 +15960,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -15992,7 +15992,7 @@ Number of outliers (down-side) is: 37 at threshold 3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#scatter and correlation of top 4 PCA components and Life Expectancy↔</span>
