@@ -13182,16 +13182,17 @@ May 2019</p>
 <li>Trained with all the features - hand-selected, algorithmically-chosen and the review type- and trained on all 3 types of review. </li>
 </ol>
 <p>To answer the questions posed:</p>
-<p><strong>Do any of your classifiers seem to overfit?</strong>
-No.  The leave one out showed some pretty tight distribution of accuracies across trials.</p>
+<p><strong>Do any of your classifiers seem to overfit?</strong></p>
+<p>No.  The leave one out showed some pretty tight distribution of accuracies across trials.</p>
 <p><strong><strong>{q for mentor: how much variation is indicative of over-fitting?}*</strong></strong></p>
 <p><strong>Which seem to perform the best? Why?</strong></p>
 <ul>
 <li>In my first comparison of the models, the hand-chosen features peformed the best because the hand-chosen features were picked primarily from lemmas that appeared in a lot of the observations (high occurrence rate), while the algorithmic features were looking deeper into occurrence rates to find lemmas that split sentiment best.  When I re-ran the feature selection process limiting the search to higher occurrence rate lemmas, the accuracy of the automated features selection process improved considerably - surpassing the manually chosen features.   </li>
 <li>I also ran several comparisons with a large number of features.  (These took a long time to fit, so I've not included that configuration in this notebook, but it can easily be demonstrated by changing the global variable FEATURE_COUNT at the top of the notebook). The performance continued to improve as I added features (accuracy &gt; 80%).  The lemmas generally don't have a lot of correlation with each other, so adding more and more features seems to work well.   </li>
 </ul>
-<p><strong>Which features seemed to be most impactful to performance?</strong>
-The occurence rate of a feature was very important to it's classifying power.  That's intuitive - i.e. it doesn't help if a lemma's presence always indicates positive sentiment if it only shows up in .001% of the sentences.  Another way to say this is that the variance of the feature is important to it's classifying power.  If it's always one-value or another, that's not very helpful.</p>
+<p><strong>Which features seemed to be most impactful to performance?</strong></p>
+<p>The occurence rate of a feature was very important to it's classifying power.  That's intuitive - i.e. it doesn't help if a lemma's presence always indicates positive sentiment if it only shows up in .001% of the sentences.  Another way to say this is that the variance of the feature is important to it's classifying power.  If it's always one-value or another, that's not very helpful.</p>
+<p>The models all seem to be biased to guessing negative, despite there being no class bias in the population. This problem might benefit from using logistic regression or SVM, so a higher bar for guessing negative could be set.</p>
 
 </div>
 </div>
@@ -13636,7 +13637,7 @@ Model 6 confusion matrix...
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>All the models are guessing negative much more often than positive.</p>
+<p>All the models are guessing negative much more often than positive, and the high false negative rate reflects that.</p>
 
 </div>
 </div>
