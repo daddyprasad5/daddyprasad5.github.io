@@ -13983,11 +13983,11 @@ Normality test statistics is 17635.587678501455 and p value is 0.0
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Interpreting-the-coefficients:">Interpreting the coefficients:<a class="anchor-link" href="#Interpreting-the-coefficients:">&#182;</a></h3><p><strong>Are the estimated coefficients statistically significant?</strong>
-They are not.  the p value for both is 0.000.  Note also that the errors are not normally distributed (see below).  Normally distributed errors are required for us to estimate the significance of coefficients.</p>
+The p value for both is 0.000 - very low indeed and indicates we can reject the null hypothessis that the coefficient for the underlying population is 0.  However, note that the errors are not normally distributed (see below).  Normally distributed errors are required for us to estimate the significance of coefficients.</p>
 <p><strong>Are the signs of the estimated coefficients in line with your previous expectations?</strong>
 Both are negative.  As humidity rises apparent temperature less actual temperature, i.e. they get closer together.  Likewise for wind speed.  That's suprising.  I would expect the opposite - that humidity and windspeed would cause confuse our perception of temperature.</p>
 <p><strong>Interpret the estimated coefficients. What are the relations between the target and the explanatory variables?</strong>
-Given the p-values for the coefficients are so low, and perhaps more importantly that we cannont estimate significance of the coefficients given the non-normality of the errors, we cannot infer any relationships from this model.</p>
+If I put aside the concern about non-normal errors, and assume that the coefficients are significant, then on average I would expect the discrepancy between apparent and actual temperature to reduce by 3 degrees celsius for each 1 unit change in humidity and by 0.1 degrees for each one unit change in windspeed.</p>
 
 </div>
 </div>
@@ -14421,11 +14421,16 @@ Normality test statistics is 3935.7465185762912 and p value is 0.0
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Interpreting-the-coefficients:">Interpreting the coefficients:<a class="anchor-link" href="#Interpreting-the-coefficients:">&#182;</a></h3><p><strong>Are the estimated coefficients statistically significant?</strong>
-They are not.  the p value for both is 0.000.  Note also that the errors are not normally distributed (see below).  Normally distributed errors are required for us to estimate the significance of coefficients.</p>
+The p value for both is 0.000 - very low indeed and indicates we can reject the null hypothessis that the coefficient for the underlying population is 0.  However, note that the errors are not normally distributed (see below).  Normally distributed errors are required for us to estimate the significance of coefficients.</p>
 <p><strong>Did the signs of the estimated coefficients for humidity and windspeed change?</strong>
 Yes, both are now positive.  As humidity rises apparent temperature less actual temperature decreases, i.e. they get closer together.  Likewise for wind speed.  That's intuitively appealing.  I would expect that humidity and windspeed would confuse our perception of temperature.  It's also intuitively appealing that wind and humidity co-occurring might mitigate each other (humidity making one feel hot and windspeed making one feel cold).</p>
 <p><strong>Interpret the estimated coefficients. What are the relations between the target and the explanatory variables?</strong>
-Given the p-values for the coefficients are so low, and perhaps more importantly that we cannont estimate significance of the coefficients given the non-normality of the errors, we cannot infer any relationships from this model.</p>
+If I put aside the concern about non-normal errors, and assume that the coefficients are significant, then on average...</p>
+<ul>
+<li>I would expect the discrepancy between apparent and actual temperature to rise by 0.2 degrees celsius times the unit change in humidity, in the absence of any wind.  </li>
+<li>I would expect the discrepance to rise by 0.1 degrees for each one unit change in windspeed, in the absence of any humidity.  </li>
+<li>If both wind and humidity are present, in addition to the individual relationships described above, I would expect the discrepancy to close by 0.3 degrees per windspeed-humidity unit. </li>
+</ul>
 
 </div>
 </div>
