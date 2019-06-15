@@ -17685,9 +17685,11 @@ The entire dataset has 379 columns; The grade 3 dataset includes 42 columns
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Target-Variable">Target Variable<a class="anchor-link" href="#Target-Variable">&#182;</a></h3><p>The target variable is a z-score of the sum of all the grade 3 standardized test scores.  The predictor is normal-like and easily explained - i.e. each child's z-score is the number of standard deviations above or below the mean score of her peers.  These poor children were subjected to 14 different standardized tests - 12 SAT and 2 BSF.</p>
-<p>The Stanford Achievement Test (SAT) is a nationally normed standardized achievement test, and the Basic
-Skills First (BSF) test, is a criterion-referenced test designed to measure areas that matched the Tennessee state currriculum.</p>
+<h3 id="Target-Variable">Target Variable<a class="anchor-link" href="#Target-Variable">&#182;</a></h3><ul>
+<li>z-score of the sum of all the grade 3 standardized test scores  </li>
+<li>12 Stanford Achievement(SAT) Tests</li>
+<li>2 Basic Skills First (BSF) Tests</li>
+</ul>
 
 </div>
 </div>
@@ -17750,8 +17752,7 @@ Normality test statistics is 15.403927777273752 and p value is 0.000451938753401
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Initial-Predictors">Initial Predictors<a class="anchor-link" href="#Initial-Predictors">&#182;</a></h3><p>The predictors consist of these variables - some present in the underlying dataset and some created by transforming underlying data.</p>
-<ul>
+<h3 id="Initial-Predictors">Initial Predictors<a class="anchor-link" href="#Initial-Predictors">&#182;</a></h3><ul>
 <li>student demographic &amp; economic data: age, race, gender, free lunch recipient</li>
 <li>teacher demographic and quality: race, years teaching, highest degree achieved</li>
 <li>race-match: True if the student and teacher identify as the same race</li>
@@ -17954,12 +17955,16 @@ Name: race_match, dtype: int64</pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Model-build-and-feature-selection">Model build and feature selection<a class="anchor-link" href="#Model-build-and-feature-selection">&#182;</a></h3><p>I compared gradient booster, random forest, lasso, ridge and elasticnet models.  The modeling process proceeded in two steps:</p>
+<h3 id="Model-build-and-feature-selection">Model build and feature selection<a class="anchor-link" href="#Model-build-and-feature-selection">&#182;</a></h3><p>Model types explored:</p>
+<ul>
+<li>tree-based ensemble: gradient booster, random forest</li>
+<li>linear regression: lasso, ridge and elasticnet models.  </li>
+</ul>
+<p>The modeling process proceeded in two steps:</p>
 <ul>
 <li>fit and tune the models, using random and grid-search methods, using the initial set of features.  </li>
 <li>re-tune the models with a more limited set of features - the most important features identified in the first attempt</li>
 </ul>
-<p>I leveraged random search for the random forest and grid search for the gradient boosting, exploring many combinations of hyperparameters.  I hand-tuned the random-forest model further, in an attempt to reduce some over-fitting.  The regression models were tuned with cross-validation exploration of alpha values.</p>
 
 </div>
 </div>
