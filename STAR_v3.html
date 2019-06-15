@@ -13120,8 +13120,9 @@ div#notebook {
 June 2019</p>
 <p><a href="https://daddyprasad5.github.io/STAR_v3.html">html version</a> - with all the code hidden away for a quick read</p>
 <p><a href="https://github.com/daddyprasad5/thinkful/blob/master/STAR_v3.ipynb">jupyter notebook version</a> - with all the code exposed in an interactive notebook</p>
+<p><a href="https://daddyprasad5.github.io/STAR_v3.slides.html">slides version</a> - presentation version</p>
 <p>The "STAR Project" tested the impact of class size on student achievement in kindergarten through third grade in Tennessee in the mid 1980s.  I am going to use the same data to see how well I can predict student achievement based on the other variables available in the dataset.</p>
-<p><strong>My motivation: </strong></p>
+<p><strong>My motivation:</strong></p>
 <ul>
 <li>Prediction of achievement can identify students that are at risk and who might merit additional intervention</li>
 <li>Identifying meaningful explanatory variables for student achievement might drive education practice or government policy</li>
@@ -13133,11 +13134,10 @@ June 2019</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Findings:">Findings:<a class="anchor-link" href="#Findings:">&#182;</a></h3><p>My models were able to explain ~70% of the variance in 3rd grade achievement.  There are some predictors leveraged by all the model types.</p>
-<ul>
-<li>As is intuitively appealing, all the models found that a strong predictor of a student's current year standardized test scores are (drum roll)...her prior years' standardized test scores.  </li>
-<li>Also unsurprising - some schools are better than others at producing high-performing students.  </li>
-<li>eacher and student race proved useful in all models. </li>
+<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h3><p>The "STAR Project" tested the impact of class size on student achievement in kindergarten through third grade in Tennessee in the mid 1980s.  I am going to use the same data to see how well I can predict student achievement based on the other variables available in the dataset.</p>
+<h4 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h4><ul>
+<li>Prediction of achievement can identify students that are at risk and who might merit additional intervention</li>
+<li>Identifying meaningful explanatory variables for student achievement might drive education practice or government policy</li>
 </ul>
 
 </div>
@@ -13146,7 +13146,14 @@ June 2019</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Beyond those predictor types, each models' internal feature selection processes have chosen differently.  The random forest model is the most intriguing.  While the other models rely heavily on school id, the random forest model uses it hardly at all, and instead brings in a rich set of other features:</p>
+<h4 id="Findings:">Findings:<a class="anchor-link" href="#Findings:">&#182;</a></h4><p>My models were able to explain ~70% of the variance in 3rd grade achievement.</p>
+<p><em>Common predictors across the models:</em></p>
+<ul>
+<li>prior years' standardized test scores  </li>
+<li>school id  </li>
+<li>teacher and student race </li>
+</ul>
+<p><em>Random Forest Predictors:</em></p>
 <ul>
 <li>student demographics (age, race, gender)</li>
 <li>student economic status (free lunch)</li>
@@ -13163,9 +13170,28 @@ June 2019</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Two of these have garnered special attention - class size and teacher/student race match.  The class size finding has been used to justify significant investment in smaller classes, and follow-on studies have demonstrated an impact in class size to later achievement through high school.  <a href="https://www.aft.org/sites/default/files/periodicals/STARSummer99.pdf">(Here's an overview.)</a></p>
-<p>The student/teacher race match finding joins several other studies of similar ilk (see <a href="https://s3.amazonaws.com/academia.edu.documents/41635223/Representation_in_the_classroom_The_effe20160127-10948-1wqol6e.pdf?response-content-disposition=inline%3B%20filename%3DRepresentation_in_the_classroom_The_effe.pdf&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWOWYYGZ2Y53UL3A%2F20190614%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190614T154255Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2305d8ef77659007741a5d4314d152b841df4763b0872063001a0799fb9c5c73">here</a> for example) that indicate that students tend to respond better to teachers of the same race.  This impact extends beyond teachers to doctors as well (see <a href="https://www.nber.org/papers/w24787.pdf">here</a>).</p>
+<p><em>Class Size &amp; Matched Race</em></p>
+<p>Two of these have garnered special attention -class size and student/teacher race match.</p>
+<ul>
+<li>Here's  <a href="https://www.aft.org/sites/default/files/periodicals/STARSummer99.pdf">a link</a> to a deeper explanation of class size relationship to achievement</li>
+<li>Here's <a href="https://s3.amazonaws.com/academia.edu.documents/41635223/Representation_in_the_classroom_The_effe20160127-10948-1wqol6e.pdf?response-content-disposition=inline%3B%20filename%3DRepresentation_in_the_classroom_The_effe.pdf&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAIWOWYYGZ2Y53UL3A%2F20190614%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20190614T154255Z&amp;X-Amz-Expires=3600&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2305d8ef77659007741a5d4314d152b841df4763b0872063001a0799fb9c5c73">a link</a> to similar studies about teacher/student race match  </li>
+<li>Here's <a href="https://www.nber.org/papers/w24787.pdf">a link</a> to a similar finding on doctor/patient race match </li>
+</ul>
 <p>At the end of this presentation, I've included some supporting analysis for both findings.  For both reduced class size and student/teach race match, there are significant differences in grade 3 achievement.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Deeper-Review:">Deeper Review:<a class="anchor-link" href="#Deeper-Review:">&#182;</a></h1><ul>
+<li>Data preparation</li>
+<li>Target</li>
+<li>Predictors</li>
+<li>Model fit and feature selection</li>
+<li>Class size and Race Match</li>
+</ul>
 
 </div>
 </div>
